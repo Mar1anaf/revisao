@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exercício 22</title>
+<style>
+    body {
+        font-family: 'Times New Roman', Times, serif;
+        background-color: #fca7e4;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        margin: 0;
+        color: #ffffff;
+    }
+
+    form {
+        max-width: 400px;
+        margin: 0 auto;
+    }
+
+    input[type="text"],
+    input[type="email"],
+    input[type="number"] {
+        width: 100%;
+        padding: 10px;
+        margin-bottom: 15px;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        box-sizing: border-box;
+        font-family: 'Times New Roman', Times, serif;
+    }
+
+    input[type="submit"] {
+        background-color: #b51e8a;
+        color: white;
+        padding: 14px 20px;
+        margin: 8px 0;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+        font-family: 'Times New Roman', Times, serif;
+        font-weight: bold;
+    }
+
+    input[type="submit"]:hover {
+        background-color: #ffffff;
+        color: #b51e8a;
+    }
+
+    .error {
+        color: red;
+    }
+    h2 {
+        color: #bf4f9f;
+    }
+
+</style>
+</head>
+<body>
+
+<form id="checkoutForm" onsubmit="return validateForm()">
+    <h2>Checkout</h2>
+    <label for="name">Nome:</label>
+    <input type="text" id="name" name="name" required placeholder="Fulano da Silva Sauro"> 
+    <span id="nameError" class="error"></span>
+
+    <label for="email">Email:</label>
+    <input type="email" id="email" name="email" required placeholder="fulaninhossilva@gmail.com">
+    <span id="emailError" class="error"></span>
+
+    <label for="cardNumber">Número do Cartão:</label>
+    <input type="text" id="cardNumber" name="cardNumber" maxlength="16" required placeholder="4532 1234 5678 9012">
+    <span id="cardNumberError" class="error"></span>
+
+    <label for="expiry">Data de Expiração:</label>
+    <input type="text" id="expiry" name="expiry" placeholder="MM/AA" required>
+    <span id="expiryError" class="error"></span>
+
+    <label for="cvv">CVV:</label>
+    <input type="number" id="cvv" name="cvv" max="999" required placeholder="123">
+    <span id="cvvError" class="error"></span>
+
+    <input type="submit" value="Finalizar Compra">
+</form>
+
+<script>
+    function validateForm() {
+        var name = document.getElementById('name').value;
+        var email = document.getElementById('email').value;
+        var cardNumber = document.getElementById('cardNumber').value;
+        var expiry = document.getElementById('expiry').value;
+        var cvv = document.getElementById('cvv').value;
+        var isValid = true;
+
+        if (name.trim() === "") {
+            document.getElementById('nameError').innerText = "Por favor, insira seu nome.";
+            isValid = false;
+        } else {
+            document.getElementById('nameError').innerText = "";
+        }
+
+        if (email.trim() === "") {
+            document.getElementById('emailError').innerText = "Por favor, insira seu email.";
+            isValid = false;
+        } else {
+            document.getElementById('emailError').innerText = "";
+        }
+
+        if (cardNumber.trim() === "" || isNaN(cardNumber) || cardNumber.length !== 16) {
+            document.getElementById('cardNumberError').innerText = "Por favor, insira um número de cartão válido.";
+            isValid = false;
+        } else {
+            document.getElementById('cardNumberError').innerText = "";
+        }
+
+        if (expiry.trim() === "" || !/^(0[1-9]|1[0-2])\/\d{2}$/.test(expiry)) {
+            document.getElementById('expiryError').innerText = "Por favor, insira uma data de expiração válida (MM/AA).";
+            isValid = false;
+        } else {
+            document.getElementById('expiryError').innerText = "";
+        }
+
+        if (cvv.trim() === "" || isNaN(cvv) || cvv.length !== 3) {
+            document.getElementById('cvvError').innerText = "Por favor, insira um CVV válido.";
+            isValid = false;
+        } else {
+            document.getElementById('cvvError').innerText = "";
+        }
+
+        return isValid;
+    }
+</script>
+
+</body>
+</html>
+<!-- Mariana Ferreira Morgado -->

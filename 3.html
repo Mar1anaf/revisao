@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exercício 3</title>
+</head>
+
+<body>
+    <ul id="lista">
+        <li>João</li>
+        <li>Maria</li>
+        <li>Toninho</li>
+        <li>Mercedes</li>
+        <li>Jovana</li>
+    </ul>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            // Seleciona todos os itens da lista
+            var items = document.querySelectorAll("#lista li");
+
+            // Adiciona o evento de clique a cada item da lista
+            items.forEach(function (item) {
+                item.addEventListener("click", function () {
+                    // Remove a classe de destaque de todos os itens
+                    items.forEach(function (i) {
+                        i.classList.remove("highlight");
+                    });
+
+                    // Adiciona a classe de destaque ao item clicado
+                    item.classList.add("highlight");
+                });
+            });
+        });
+    </script>
+</body>
+
+</html>
+
+<style>
+    body {
+        background-color: #fca7e4;
+        color: #fff;
+        font-family: 'Times New Roman', Times, serif;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        height: 100vh;
+        margin: 0;
+    }
+
+    #lista {
+        font-size: 80px;
+    }
+
+    .highlight {
+        background-color: #b51e8a;
+        border-radius: 80px;
+        padding: 1%;
+    }
+</style>
+<!-- Mariana Ferreira Morgado -->

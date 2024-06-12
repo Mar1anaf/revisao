@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exercício 16</title>
+    <style>
+        body {
+            background-color: #fca7e4;
+            color: #fff;
+            font-family: 'Times New Roman', Times, serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            margin: 0;
+        }
+
+        .container {
+            background-color: #ffffff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            width: 80%;
+            max-width: 600px;
+        }
+
+        h1 {
+            color: #bf4f9f;
+        }
+
+        input[type="text"] {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box;
+            font-size: 16px;
+            font-family: 'Times New Roman', Times, serif;
+        }
+
+        ul {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        li {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px;
+            margin-bottom: 5px;
+            background-color: #f9f9f9;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+
+        li.completed {
+            text-decoration: line-through;
+            color: #888;
+        }
+
+        button {
+            padding: 5px 10px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            background-color: #b51e8a;
+            color: white;
+            font-family: 'Times New Roman', Times, serif;
+            font-weight: bold;
+        }
+
+        button:hover {
+            color: #b51e8a;
+            background-color: #ffffff;
+            border-color: none;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <h1>Lista de Tarefas</h1>
+        <input type="text" id="newTask" placeholder="Adicionar nova tarefa">
+        <ul id="taskList"></ul>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const newTaskInput = document.getElementById('newTask');
+            const taskList = document.getElementById('taskList');
+
+            function loadTasks() {
+                const tasks = JSON.parse(localStorage.getItem('tasks')) || [];
+                tasks.forEach(task => {
+                    addTaskToDOM(task.text, task.completed);
+                });
+            }
+
+            function saveTasks() {
+                const tasks = [];
+                taskList.querySelectorAll('li').forEach(task => {
+                    tasks.push({
+                        text: task.querySelector('span').textContent,
+                        completed: task.classList.contains('completed')
+                    });
+                });
+                localStorage.setItem('tasks', JSON.stringify(tasks));
+            }
+
+            function addTaskToDOM(text, completed = false) {
+                const li = document.createElement('li');
+                const span = document.createElement('span');
+                span.textContent = text;
+
+                if (completed) {
+                    li.classList.add('completed');
+                }
+
+                li.appendChild(span);
+
+                const completeButton = document.createElement('button');
+                completeButton.textContent = 'Concluir';
+                completeButton.addEventListener('click', () => {
+                    li.classList.toggle('completed');
+                    saveTasks();
+                });
+                li.appendChild(completeButton);
+
+                const removeButton = document.createElement('button');
+                removeButton.textContent = 'Remover';
+                removeButton.addEventListener('click', () => {
+                    li.remove();
+                    saveTasks();
+                });
+                li.appendChild(removeButton);
+
+                taskList.appendChild(li);
+            }
+
+            newTaskInput.addEventListener('keypress', (event) => {
+                if (event.key === 'Enter') {
+                    const text = newTaskInput.value.trim();
+                    if (text !== '') {
+                        addTaskToDOM(text);
+                        saveTasks();
+                        newTaskInput.value = '';
+                    }
+                }
+            });
+
+            loadTasks();
+        });
+    </script>
+</body>
+
+</html>
+<!-- Mariana Ferreira Morgado -->

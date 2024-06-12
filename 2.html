@@ -1,0 +1,72 @@
+<!-- Mariana Ferreira Morgado -->
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exercício 2</title>
+</head>
+
+<body>
+    <h2 class="titulo">Página Inicial Simples</h2>
+    <p class="paragrafo">Seja muito bem-vindo(a) a nossa página, espero que goste.</p>
+    <img src="./img/coracao.png" alt="Imagem" class="imagem">
+    <button class="botao" onclick="Alert()">Clique aqui e sinta a mágica!</button>
+
+    <script>
+        function Alert() {
+            alert("Bem-Vindo(a)!");
+        }
+    </script>
+</body>
+
+</html>
+
+<style>
+    body {
+        background-color: #fca7e4;
+        color: #fff;
+        font-family: 'Times New Roman', Times, serif;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        height: 100vh;
+        margin: 0;
+    }
+
+    h2 {
+        color: #bf4f9f;
+        font-size: 50px;
+    }
+
+    p {
+        font-size: 20px;
+        margin-top: -20px;
+    }
+    img {
+        width: 10%;
+        padding: 10px;
+        border-radius: 10px;
+        background-color: #ed37a6;
+    }
+    img:hover {
+        background-color: #FEEE61; 
+    }
+    button {
+        margin-top: 1%;
+        border-radius: 30px;
+        border-color: #b51e8a;
+        background-color: #b51e8a;
+        color: #fff;
+        font-family: 'Times New Roman', Times, serif;
+        font-weight: bold;
+        padding: 1%;
+    }
+    button:hover {
+        background-color: #ffffff;
+        color: #b51e8a;
+        border-color: #ffffff;
+    }
+</style>

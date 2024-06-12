@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exercício 9</title>
+    <style>
+        body {
+            background-color: #fca7e4;
+            color: #fff;
+            font-family: 'Times New Roman', Times, serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            margin: 0;
+        }
+
+        /* Slideshow container */
+        .slideshow-container {
+            max-width: 1000px;
+            position: relative;
+            margin: auto;
+        }
+
+        /* Hide the images by default */
+        .slides-fade {
+            display: none;
+        }
+
+        /* Next & previous buttons */
+        .prev,
+        .next {
+            cursor: pointer;
+            position: absolute;
+            top: 50%;
+            width: auto;
+            padding: 16px;
+            margin-top: -22px;
+            color: white;
+            font-weight: bold;
+            font-size: 18px;
+            transition: 0.6s ease;
+            border-radius: 0 3px 3px 0;
+        }
+
+        /* Position the "next button" to the right */
+        .next {
+            right: 0;
+            border-radius: 3px 0 0 3px;
+        }
+
+        /* On hover, add a black background color with a little bit see-through */
+        .prev:hover,
+        .next:hover {
+            background-color: rgba(0, 0, 0, 0.8);
+        }
+
+        /* Fade animation */
+        .fade {
+            -webkit-animation-name: fade;
+            -webkit-animation-duration: 1.5s;
+            animation-name: fade;
+            animation-duration: 1.5s;
+        }
+
+        @keyframes fade {
+            from {
+                opacity: .4
+            }
+
+            to {
+                opacity: 1
+            }
+        }
+
+        /* Button animation */
+        .animate-button {
+            background-color: #b51e8a;
+            border: none;
+            color: white;
+            padding: 10px 20px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 16px;
+            cursor: pointer;
+            border-radius: 5px;
+            transition: background-color 0.3s ease;
+            margin-bottom: 5%;
+        }
+
+        .animate-button:hover {
+            color: #b51e8a;
+            background-color: #ffffff;
+            border-color: none;
+        }
+
+        /* Animation when clicked */
+        .animate-clicked {
+            animation-name: grow;
+            animation-duration: 0.5s;
+        }
+
+        @keyframes grow {
+            0% {
+                transform: scale(1);
+            }
+
+            50% {
+                transform: scale(1.1);
+            }
+
+            100% {
+                transform: scale(1);
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="slideshow-container">
+        <div class="slides-fade">
+            <img src="https://preview.redd.it/rzsp2k3iehab1.jpg?auto=webp&s=900c681d297ae9fd76ebc88c04c86a6efd71e355"
+                style="width:100%">
+        </div>
+
+        <div class="slides-fade">
+            <img src="https://images6.fanpop.com/image/photos/32600000/GG-blair-and-chuck-32684564-500-423.jpg"
+                style="width:100%">
+        </div>
+
+        <div class="slides-fade">
+            <img src="https://nyandabout.com/wp-content/uploads/2013/03/0515BlairDorota02.jpg" style="width:100%">
+        </div>
+
+        <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
+        <a class="next" onclick="plusSlides(1)">&#10095;</a>
+    </div>
+
+    <button class="animate-button" onclick="animateButton()">Clique para animar!</button>
+
+    <script>
+        var slideIndex = 0;
+        var slides = document.getElementsByClassName("slides-fade");
+
+        // Função para avançar ou retroceder os slides
+        function plusSlides(n) {
+            showSlides(slideIndex += n);
+        }
+
+        // Função para mostrar os slides
+        function showSlides(n) {
+            var i;
+            if (n >= slides.length) {
+                slideIndex = 0;
+            }
+            if (n < 0) {
+                slideIndex = slides.length - 1;
+            }
+            for (i = 0; i < slides.length; i++) {
+                slides[i].style.display = "none";
+            }
+            slides[slideIndex].style.display = "block";
+        }
+
+        // Função para mudar automaticamente os slides a cada 3 segundos
+        function autoSlides() {
+            plusSlides(1);
+            setTimeout(autoSlides, 3000); // Muda para o próximo slide após 3 segundos
+        }
+
+        autoSlides(); // Inicia a mudança automática dos slides
+
+        // Função para animar o botão
+        function animateButton() {
+            var button = document.querySelector('.animate-button');
+            button.classList.add('animate-clicked');
+            setTimeout(function () {
+                button.classList.remove('animate-clicked');
+            }, 500);
+        }
+    </script>
+</body>
+
+</html>
+<!-- Mariana Ferreira Morgado -->

@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exercício 14</title>
+    <style>
+        body {
+            font-family: 'Times New Roman', Times, serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 20px;
+            background-color: #fca7e4;
+        }
+
+        .gallery {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            justify-content: center;
+        }
+
+        .gallery img {
+            width: 200px;
+            height: 150px;
+            object-fit: cover;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .buttons {
+            margin-bottom: 20px;
+        }
+
+        .buttons button {
+            padding: 10px 20px;
+            margin: 0 10px;
+            border: none;
+            border-radius: 4px;
+            background-color: #b51e8a;
+            color: white;
+            cursor: pointer;
+            font-size: 16px;
+        }
+
+        .buttons button:hover {
+            color: #b51e8a;
+            background-color: #ffffff;
+            border-color: none;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="buttons">
+        <button onclick="filterImages('all')">Todos</button>
+        <button onclick="filterImages('nature')">Natureza</button>
+        <button onclick="filterImages('animals')">Animais</button>
+        <button onclick="filterImages('architecture')">Arquitetura</button>
+    </div>
+
+    <div class="gallery" id="gallery">
+        <img src="https://lh3.googleusercontent.com/proxy/mMebLvk1I5R2l9JyaSCh6VxNToxyGwkEKtMQmK3iAam97fqZLegq0RYc4_bSMEwIb7RM2h1KXdSDsp-b3GHZubFcsiSX0Vnxlwuriy1qn8RutgPCN7HAx60x65E"
+            alt="Natureza" class="nature">
+        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR-37NjGAsUzLoi2jLbl-g39wFFFZYwKeEGsQ&s"
+            alt="Animais" class="animals">
+        <img src="https://sibrapefundacoes.com.br/wp-content/uploads/2023/04/Cybertecture-Egg-Mumbai-India-1024x614.jpg"
+            alt="Arquitetura" class="architecture">
+        <img src="https://images.ecycle.com.br/wp-content/uploads/2013/10/24161308/wil-stewart-pHANr-CpbYM-unsplash-1024x683.jpg.webp"
+            alt="Natureza" class="nature">
+        <img src="https://s1.static.brasilescola.uol.com.br/be/conteudo/images/o-golfinho-um-exemplo-animal-pertencente-ao-grupo-dos-mamiferos-5bd334f3235f1.jpg"
+            alt="Animais" class="animals">
+        <img src="https://static.todamateria.com.br/upload/bo/sj/bosjes001-cke.jpg" alt="Arquitetura"
+            class="architecture">
+        <img src="https://lh3.googleusercontent.com/proxy/mMebLvk1I5R2l9JyaSCh6VxNToxyGwkEKtMQmK3iAam97fqZLegq0RYc4_bSMEwIb7RM2h1KXdSDsp-b3GHZubFcsiSX0Vnxlwuriy1qn8RutgPCN7HAx60x65E"
+            alt="Natureza" class="nature">
+        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR-37NjGAsUzLoi2jLbl-g39wFFFZYwKeEGsQ&s"
+            alt="Animais" class="animals">
+        <img src="https://sibrapefundacoes.com.br/wp-content/uploads/2023/04/Cybertecture-Egg-Mumbai-India-1024x614.jpg"
+            alt="Arquitetura" class="architecture">
+        <img src="https://images.ecycle.com.br/wp-content/uploads/2013/10/24161308/wil-stewart-pHANr-CpbYM-unsplash-1024x683.jpg.webp"
+            alt="Natureza" class="nature">
+        <img src="https://s1.static.brasilescola.uol.com.br/be/conteudo/images/o-golfinho-um-exemplo-animal-pertencente-ao-grupo-dos-mamiferos-5bd334f3235f1.jpg"
+            alt="Animais" class="animals">
+        <img src="https://static.todamateria.com.br/upload/bo/sj/bosjes001-cke.jpg" alt="Arquitetura"
+            class="architecture">
+        <img src="https://lh3.googleusercontent.com/proxy/mMebLvk1I5R2l9JyaSCh6VxNToxyGwkEKtMQmK3iAam97fqZLegq0RYc4_bSMEwIb7RM2h1KXdSDsp-b3GHZubFcsiSX0Vnxlwuriy1qn8RutgPCN7HAx60x65E"
+            alt="Natureza" class="nature">
+        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR-37NjGAsUzLoi2jLbl-g39wFFFZYwKeEGsQ&s"
+            alt="Animais" class="animals">
+        <img src="https://sibrapefundacoes.com.br/wp-content/uploads/2023/04/Cybertecture-Egg-Mumbai-India-1024x614.jpg"
+            alt="Arquitetura" class="architecture">
+        <img src="https://images.ecycle.com.br/wp-content/uploads/2013/10/24161308/wil-stewart-pHANr-CpbYM-unsplash-1024x683.jpg.webp"
+            alt="Natureza" class="nature">
+        <img src="https://s1.static.brasilescola.uol.com.br/be/conteudo/images/o-golfinho-um-exemplo-animal-pertencente-ao-grupo-dos-mamiferos-5bd334f3235f1.jpg"
+            alt="Animais" class="animals">
+        <img src="https://static.todamateria.com.br/upload/bo/sj/bosjes001-cke.jpg" alt="Arquitetura"
+            class="architecture">
+        <img src="https://lh3.googleusercontent.com/proxy/mMebLvk1I5R2l9JyaSCh6VxNToxyGwkEKtMQmK3iAam97fqZLegq0RYc4_bSMEwIb7RM2h1KXdSDsp-b3GHZubFcsiSX0Vnxlwuriy1qn8RutgPCN7HAx60x65E"
+            alt="Natureza" class="nature">
+        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR-37NjGAsUzLoi2jLbl-g39wFFFZYwKeEGsQ&s"
+            alt="Animais" class="animals">
+        <img src="https://sibrapefundacoes.com.br/wp-content/uploads/2023/04/Cybertecture-Egg-Mumbai-India-1024x614.jpg"
+            alt="Arquitetura" class="architecture">
+        <img src="https://images.ecycle.com.br/wp-content/uploads/2013/10/24161308/wil-stewart-pHANr-CpbYM-unsplash-1024x683.jpg.webp"
+            alt="Natureza" class="nature">
+        <img src="https://s1.static.brasilescola.uol.com.br/be/conteudo/images/o-golfinho-um-exemplo-animal-pertencente-ao-grupo-dos-mamiferos-5bd334f3235f1.jpg"
+            alt="Animais" class="animals">
+        <img src="https://static.todamateria.com.br/upload/bo/sj/bosjes001-cke.jpg" alt="Arquitetura"
+            class="architecture">
+        <img src="https://lh3.googleusercontent.com/proxy/mMebLvk1I5R2l9JyaSCh6VxNToxyGwkEKtMQmK3iAam97fqZLegq0RYc4_bSMEwIb7RM2h1KXdSDsp-b3GHZubFcsiSX0Vnxlwuriy1qn8RutgPCN7HAx60x65E"
+            alt="Natureza" class="nature">
+        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR-37NjGAsUzLoi2jLbl-g39wFFFZYwKeEGsQ&s"
+            alt="Animais" class="animals">
+        <img src="https://sibrapefundacoes.com.br/wp-content/uploads/2023/04/Cybertecture-Egg-Mumbai-India-1024x614.jpg"
+            alt="Arquitetura" class="architecture">
+        <img src="https://images.ecycle.com.br/wp-content/uploads/2013/10/24161308/wil-stewart-pHANr-CpbYM-unsplash-1024x683.jpg.webp"
+            alt="Natureza" class="nature">
+    </div>
+
+    <script>
+        function filterImages(category) {
+            const images = document.querySelectorAll('.gallery img');
+            images.forEach(image => {
+                if (category === 'all' || image.classList.contains(category)) {
+                    image.style.display = 'block';
+                } else {
+                    image.style.display = 'none';
+                }
+            });
+        }
+
+        // Inicializa a galeria mostrando todas as imagens
+        filterImages('all');
+    </script>
+</body>
+
+</html>
+<!-- Mariana Ferreira Morgado -->

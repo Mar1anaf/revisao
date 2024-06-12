@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exercício 5</title>
+</head>
+
+<body>
+    <form id="contactForm">
+        <div id="error" class="error"></div>
+        <label for="name">Nome:</label>
+        <input type="text" id="name" name="name">
+
+        <label for="email">E-mail:</label>
+        <input type="email" id="email" name="email">
+
+        <label for="message">Mensagem:</label>
+        <textarea id="message" name="message" rows="5"></textarea>
+
+        <button type="submit">Enviar</button>
+    </form>
+
+    <script>
+        document.getElementById("contactForm").addEventListener("submit", function (event) {
+            event.preventDefault();
+
+            // Limpa mensagens de erro anteriores
+            var errorDiv = document.getElementById("error");
+            errorDiv.textContent = "";
+
+            // Seleciona os campos do formulário
+            var name = document.getElementById("name").value.trim();
+            var email = document.getElementById("email").value.trim();
+            var message = document.getElementById("message").value.trim();
+
+            // Valida se todos os campos estão preenchidos
+            if (name === "" || email === "" || message === "") {
+                errorDiv.textContent = "Por favor, preencha todos os campos.";
+                return;
+            }
+
+            // Aqui você pode adicionar o código para enviar o formulário, por exemplo, usando AJAX ou simplesmente:
+            alert("Formulário enviado com sucesso!");
+        });
+    </script>
+
+</body>
+
+</html>
+<style>
+    body {
+        background-color: #fca7e4;
+        color: #fff;
+        font-family: 'Times New Roman', Times, serif;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        height: 100vh;
+        margin: 0;
+    }
+
+    form {
+        max-width: 600px;
+        margin: 0 auto;
+        padding: 20px;
+        border: 1px solid #ddd;
+        background-color: #f9f9f9;
+        border-radius: 8px;
+    }
+
+    label {
+        display: block;
+        margin-bottom: 8px;
+        font-weight: bold;
+    }
+
+    input[type="text"],
+    input[type="email"],
+    textarea {
+        width: 100%;
+        padding: 10px;
+        margin-bottom: 15px;
+        border: 1px solid #ddd;
+        border-radius: 5px;
+        box-sizing: border-box;
+        font-family: 'Times New Roman', Times, serif;
+    }
+
+    button {
+        background-color: #b51e8a;
+        color: white;
+        padding: 10px 20px;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+    }
+
+    button:hover {
+        color: #b51e8a;
+        background-color: #ffffff;
+        border: none;
+    }
+
+    .error {
+        color: red;
+        margin-bottom: 15px;
+    }
+</style>
+<!-- Mariana Ferreira Morgado -->

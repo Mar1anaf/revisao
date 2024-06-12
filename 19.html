@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exercício 19</title>
+    <style>
+        body {
+            background-color: #fca7e4;
+            color: #fff;
+            font-family: 'Times New Roman', Times, serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            margin: 0;
+        }
+
+        /* Estilo para o formulário */
+        form {
+            margin: 20px auto;
+            width: 300px;
+            text-align: center;
+        }
+
+        /* Estilo para o botão */
+        button {
+            padding: 10px 20px;
+            background-color: #b51e8a;
+            color: #fff;
+            border: none;
+            cursor: pointer;
+            border-radius: 5px;
+            margin-top: 10px;
+            font-family: 'Times New Roman', Times, serif;
+            font-weight: bold;
+
+        }
+
+        button:hover {
+            color: #b51e8a;
+            background-color: #ffffff;
+            border-color: none;
+        }
+
+        /* Estilo para a área de visualização dos arquivos */
+        #preview {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            margin-top: 20px;
+        }
+
+        /* Estilo para cada imagem na visualização */
+        #preview img {
+            margin: 10px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+
+<body>
+    <title>Upload de Arquivos com Visualização</title>
+    <script>
+        function previewFiles() {
+            var preview = document.querySelector('#preview');
+            var files = document.querySelector('input[type=file]').files;
+
+            function readAndPreview(file) {
+                // Verifica se o arquivo é uma imagem
+                if (/\.(jpe?g|png|gif)$/i.test(file.name)) {
+                    var reader = new FileReader();
+
+                    reader.addEventListener("load", function () {
+                        var image = new Image();
+                        image.height = 100;
+                        image.title = file.name;
+                        image.src = this.result;
+                        preview.appendChild(image);
+                    }, false);
+
+                    reader.readAsDataURL(file);
+                }
+            }
+
+            if (files) {
+                [].forEach.call(files, readAndPreview);
+            }
+        }
+    </script>
+    </head>
+
+    <body>
+
+        <form action="#" method="post" enctype="multipart/form-data">
+            <input type="file" id="fileInput" name="files[]" multiple onchange="previewFiles()">
+            <button type="submit">Enviar</button>
+        </form>
+
+        <div id="preview"></div>
+    </body>
+
+</html>
+<!-- Mariana Ferreira Morgado -->

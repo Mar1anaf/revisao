@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exercício 23</title>
+    <style>
+        body {
+            background-color: #fca7e4;
+            color: #fff;
+            font-family: 'Times New Roman', Times, serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            margin: 0;
+        }
+
+        .container {
+            max-width: 600px;
+            margin: 0 auto;
+            text-align: center;
+            padding: 20px;
+        }
+
+        input[type="text"] {
+            width: 20%;
+            margin-bottom: 10px;
+            padding: 8px;
+            border: none;
+            border-radius: 4px;
+            font-family: 'Times New Roman', Times, serif;
+        }
+
+        button {
+            background-color: #b51e8a;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-family: 'Times New Roman', Times, serif;
+            font-weight: bold;
+        }
+
+        button:hover {
+            color: #b51e8a;
+            background-color: #ffffff;
+            border-color: none;
+        }
+
+        #weather-info {
+            margin-top: 20px;
+        }
+
+        label {
+            color: #bf4f9f;
+            font-size: 30px;
+            font-weight: bold;
+            margin-bottom: 1%;
+        }
+    </style>
+</head>
+
+<body>
+    <label for="city">Digite o nome da cidade:</label>
+    <input type="text" id="city" placeholder="Digite o nome da cidade">
+    <button onclick="getWeather()">Obter Clima</button>
+    <div id="weather-info"></div>
+
+    <script>
+        async function getWeather() {
+            const city = document.getElementById('city').value;
+            const apiKey = '81832477140af31650fcab5c6793756c'; // Substitua pela sua chave de API do OpenWeatherMap
+            const apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}`;
+
+            try {
+                const response = await fetch(apiUrl);
+                const data = await response.json();
+
+                if (response.ok) {
+                    const temperaturaCelsius = (data.main.temp - 273.15).toFixed(1); // Conversão para Celsius com uma casa decimal
+                    const condicaoTempo = traduzirCondicao(data.weather[0].description); // Tradução da descrição do tempo
+                    const umidade = data.main.humidity;
+                    const weatherInfo = `
+                        <h2>Previsão do Tempo para ${city}</h2>
+                        <p>Temperatura atual: ${temperaturaCelsius}°C</p>
+                        <p>Condição: ${condicaoTempo}</p>
+                        <p>Umidade: ${umidade}%</p>
+                    `;
+                    document.getElementById('weather-info').innerHTML = weatherInfo;
+                } else {
+                    document.getElementById('weather-info').innerHTML = '<p>Não foi possível obter a previsão do tempo para esta cidade.</p>';
+                }
+            } catch (error) {
+                console.error('Erro ao obter dados do clima:', error);
+                document.getElementById('weather-info').innerHTML = '<p>Erro ao obter dados do clima. Por favor, tente novamente mais tarde.</p>';
+            }
+        }
+
+        function traduzirCondicao(descricao) {
+            // Mapeie as condições para termos em português
+            switch (descricao.toLowerCase()) {
+                case 'clear sky':
+                    return 'Céu limpo';
+                case 'few clouds':
+                    return 'Poucas nuvens';
+                case 'scattered clouds':
+                    return 'Nuvens dispersas';
+                case 'broken clouds':
+                    return 'Nuvens quebradas';
+                case 'shower rain':
+                    return 'Chuva fraca';
+                // Adicione outras condições conforme necessário
+                default:
+                    return descricao;
+            }
+        }
+    </script>
+</body>
+
+</html>

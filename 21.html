@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exercíco 21</title>
+</head>
+
+<body>
+    <div class="container">
+        <h1>Faça sua Reserva</h1>
+        <form id="reservationForm">
+            <label for="date">Data:</label>
+            <input type="date" id="date" name="date" required>
+
+            <label for="time">Hora:</label>
+            <input type="time" id="time" name="time" required>
+
+            <button type="submit">Reservar</button>
+        </form>
+        <div id="message"></div>
+    </div>
+</body>
+<script>
+    document.getElementById('reservationForm').addEventListener('submit', function (e) {
+        e.preventDefault();
+
+        const date = document.getElementById('date').value;
+        const time = document.getElementById('time').value;
+        const message = document.getElementById('message');
+
+        if (date && time) {
+            message.textContent = `Reserva feita para ${date} às ${time}`;
+            message.style.color = 'green';
+        } else {
+            message.textContent = 'Por favor, selecione uma data e hora.';
+            message.style.color = 'red';
+        }
+    });
+</script>
+
+</html>
+<style>
+    body {
+        background-color: #fca7e4;
+        color: #fff;
+        font-family: 'Times New Roman', Times, serif;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        height: 100vh;
+        margin: 0;
+    }
+
+    .container {
+        background: white;
+        padding: 20px;
+        border-radius: 8px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        max-width: 400px;
+        width: 100%;
+    }
+
+    h1 {
+        margin-bottom: 20px;
+    }
+
+    label {
+        display: block;
+        margin-top: 10px;
+        font-weight: bold;
+    }
+
+    input[type="date"],
+    input[type="time"] {
+        width: calc(100% - 20px);
+        padding: 8px;
+        margin-top: 5px;
+        margin-bottom: 20px;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        font-family: 'Times New Roman', Times, serif;
+    }
+
+    button {
+        padding: 10px 20px;
+        background-color: #b51e8a;
+        color: #fff;
+        border: none;
+        cursor: pointer;
+        border-radius: 5px;
+        margin-top: 10px;
+        font-family: 'Times New Roman', Times, serif;
+        font-weight: bold;
+    }
+
+    button:hover {
+        color: #b51e8a;
+        background-color: #ffffff;
+        border-color: none;
+    }
+
+    #message {
+        margin-top: 20px;
+        font-weight: bold;
+    }
+</style>

@@ -1,0 +1,81 @@
+<!-- Mariana Ferreira Morgado -->
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exercício 24</title>
+    <style>
+        body {
+            background-color: #fca7e4;
+            color: #fff;
+            font-family: 'Times New Roman', Times, serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            margin: 0;
+        }
+
+        .audio-player {
+            text-align: center;
+        }
+
+        .controls button {
+            padding: 10px 20px;
+            margin: 0 5px;
+            font-size: 16px;
+            background-color: #b51e8a;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-family: 'Times New Roman', Times, serif;
+            font-weight: bold;
+        }
+
+        .controls button:hover {
+            color: #b51e8a;
+            background-color: #ffffff;
+            border-color: none;
+        }
+
+        .controls button:active {
+            background-color: #e442b6;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="audio-player">
+        <audio id="audio" src="./img/8fa34f30-0a83-4360-b201-23c30567b3e9.mp4"></audio>
+        <div class="controls">
+            <button id="playBtn">Play</button>
+            <button id="pauseBtn">Pause</button>
+            <button id="stopBtn">Stop</button>
+        </div>
+    </div>
+    <script>
+        const audio = document.getElementById('audio');
+        const playBtn = document.getElementById('playBtn');
+        const pauseBtn = document.getElementById('pauseBtn');
+        const stopBtn = document.getElementById('stopBtn');
+
+        playBtn.addEventListener('click', () => {
+            audio.play();
+        });
+
+        pauseBtn.addEventListener('click', () => {
+            audio.pause();
+        });
+
+        stopBtn.addEventListener('click', () => {
+            audio.pause();
+            audio.currentTime = 0;
+        });
+    </script>
+</body>
+
+</html>

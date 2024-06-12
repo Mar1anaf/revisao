@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exercício 11</title>
+    <style>
+        body {
+            background-color: #fca7e4;
+            color: #fff;
+            font-family: 'Times New Roman', Times, serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            margin: 0;
+        }
+
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background-color: #fca7e4;
+            color: #c11c82;
+            padding: 10px 20px;
+        }
+
+        .navbar-logo img {
+            width: 140px;
+            height: auto;
+        }
+
+        .navbar-links {
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+            display: flex;
+        }
+
+        .navbar-links li {
+            margin-right: 20px;
+        }
+
+        .navbar-links li:last-child {
+            margin-right: 0;
+        }
+
+        .navbar-links a {
+            text-decoration: none;
+            color: #ffffff;
+            font-weight: bold;
+        }
+
+        .navbar-toggle {
+            display: none;
+            flex-direction: column;
+            cursor: pointer;
+        }
+
+        .bar {
+            width: 25px;
+            height: 3px;
+            background-color: #c11c82;
+            margin: 2px 0;
+            border-radius: 5px;
+            /* Adiciona bordas arredondadas */
+        }
+
+        .content {
+            padding: 20px;
+        }
+
+        @media screen and (max-width: 768px) {
+            .navbar-links {
+                display: none;
+                flex-direction: column;
+                width: 100%;
+                background-color: #c11c82;
+                position: absolute;
+                top: 60px;
+                left: 0;
+                text-align: center;
+            }
+
+            .navbar-links li {
+                margin: 10px 0;
+            }
+
+            .navbar-toggle {
+                display: flex;
+            }
+
+            .navbar-links.active {
+                display: flex;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <nav class="navbar">
+        <div class="navbar-logo"><img src="./img/coracao.png" alt="Logo"></div>
+        <ul class="navbar-links">
+            <li><a href="#">Início</a></li>
+            <li><a href="#">Sobre</a></li>
+            <li><a href="#">Corações</a></li>
+        </ul>
+        <div class="navbar-toggle" onclick="toggleMenu()">
+            <div class="bar"></div>
+            <div class="bar"></div>
+            <div class="bar"></div>
+        </div>
+    </nav>
+    <div class="content">
+    </div>
+    <script>
+        function toggleMenu() {
+            const navbarLinks = document.querySelector('.navbar-links');
+            navbarLinks.classList.toggle('active');
+        }
+    </script>
+</body>
+
+</html>
+<!-- Mariana Ferreira Morgado -->

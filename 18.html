@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exercício 18</title>
+    <style>
+        body {
+            background-color: #fca7e4;
+            color: #fff;
+            font-family: 'Times New Roman', Times, serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            margin: 0;
+        }
+
+        .container {
+            background-color: #ffffff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            width: 80%;
+            max-width: 400px;
+            text-align: center;
+        }
+
+        h1 {
+            color: #bf4f9f;
+        }
+
+        input[type="text"],
+        input[type="password"] {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box;
+            font-size: 16px;
+            font-family: 'Times New Roman', Times, serif;
+        }
+
+        input[type="submit"] {
+            background-color: #b51e8a;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+            font-family: 'Times New Roman', Times, serif;
+            font-weight: bold;
+
+        }
+
+        input[type="submit"]:hover {
+            color: #b51e8a;
+            background-color: #ffffff;
+            border-color: none;
+        }
+
+        .message {
+            margin-top: 20px;
+            font-size: 18px;
+        }
+
+        #map {
+            width: 100%;
+            height: 500px;
+            border: 0;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <h1>Login</h1>
+        <form id="loginForm">
+            <input type="text" id="username" placeholder="Usuário" required>
+            <input type="password" id="password" placeholder="Senha" required>
+            <input type="submit" value="Entrar">
+        </form>
+        <div class="message" id="message"></div>
+    </div>
+
+    <script>
+        const validUsername = 'admin';
+        const validPassword = '1234';
+
+        document.addEventListener('DOMContentLoaded', () => {
+            const loginForm = document.getElementById('loginForm');
+            const message = document.getElementById('message');
+
+            function checkLoginStatus() {
+                const loggedIn = localStorage.getItem('loggedIn');
+                if (loggedIn === 'true') {
+                    message.textContent = 'Você está logado!';
+                    loginForm.style.display = 'none';
+                } else {
+                    message.textContent = '';
+                    loginForm.style.display = 'block';
+                }
+            }
+
+            loginForm.addEventListener('submit', (event) => {
+                event.preventDefault();
+                const username = document.getElementById('username').value;
+                const password = document.getElementById('password').value;
+
+                if (username === validUsername && password === validPassword) {
+                    localStorage.setItem('loggedIn', 'true');
+                    message.textContent = 'Login bem-sucedido!';
+                    loginForm.style.display = 'none';
+                } else {
+                    message.textContent = 'Usuário ou senha incorretos!';
+                }
+            });
+
+            checkLoginStatus();
+        });
+    </script>
+    <iframe id="map"
+        src="https://www.google.com/maps/place/Ca%C3%A7apava,+SP/@-23.0934683,-45.7027388,13z/data=!3m1!4b1!4m6!3m5!1s0x94cc516de4e6e1a3:0x6544283198cf070f!8m2!3d-23.1040994!4d-45.706576!16zL20vMDN6OWJn?entry=ttur"
+        allowfullscreen="" loading="lazy"></iframe>
+</body>
+
+</html>
+<!-- Mariana Ferreira Morgado -->

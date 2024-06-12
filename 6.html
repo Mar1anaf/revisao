@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exercício 5</title>
+</head>
+
+<body>
+    <form id="contactForm">
+        <div id="error" class="error"></div>
+        <label for="name">Nome:</label>
+        <input type="text" id="name" name="name" placeholder="Fulano da Silva Sauro">
+
+        <label for="email">E-mail:</label>
+        <input type="email" id="email" name="email" placeholder="fulaninhossilva@gmail.com">
+
+        <label for="message">Mensagem:</label>
+        <textarea id="message" name="message" rows="5" placeholder="Escreva uma mensagem aqui..."></textarea>
+
+        <button type="submit">Enviar</button>
+    </form>
+
+    <div class="comments-section">
+        <h3>Comentários</h3>
+        <div id="commentsList"></div>
+        <textarea id="commentText" rows="3" placeholder="Escreva seu comentário..."></textarea>
+        <button id="addCommentBtn">Adicionar Comentário</button>
+    </div>
+
+    <script>
+        document.getElementById("contactForm").addEventListener("submit", function (event) {
+            event.preventDefault();
+
+            // Limpa mensagens de erro anteriores
+            var errorDiv = document.getElementById("error");
+            errorDiv.textContent = "";
+
+            // Seleciona os campos do formulário
+            var name = document.getElementById("name").value.trim();
+            var email = document.getElementById("email").value.trim();
+            var message = document.getElementById("message").value.trim();
+
+            // Valida se todos os campos estão preenchidos
+            if (name === "" || email === "" || message === "") {
+                errorDiv.textContent = "Por favor, preencha todos os campos.";
+                return;
+            }
+
+            // Aqui você pode adicionar o código para enviar o formulário, por exemplo, usando AJAX ou simplesmente:
+            alert("Formulário enviado com sucesso!");
+        });
+
+        document.getElementById("addCommentBtn").addEventListener("click", function () {
+            var commentText = document.getElementById("commentText").value.trim();
+
+            if (commentText === "") {
+                alert("Por favor, escreva um comentário.");
+                return;
+            }
+
+            var commentsList = document.getElementById("commentsList");
+
+            var newComment = document.createElement("div");
+            newComment.classList.add("comment");
+            newComment.textContent = commentText;
+
+            commentsList.appendChild(newComment);
+
+            document.getElementById("commentText").value = "";
+        });
+    </script>
+
+</body>
+
+</html>
+<style>
+    body {
+        background-color: #fca7e4;
+        color: #fff;
+        font-family: 'Times New Roman', Times, serif;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        height: 100vh;
+        margin: 0;
+    }
+
+    form,
+    .comments-section {
+        max-width: 700px;
+        /* Aumentado para 700px para mais largura */
+        margin: 0 auto;
+        margin-bottom: 1%;
+        padding: 20px 60px;
+        /* Adicionado padding horizontal maior */
+        border: 1px solid #ddd;
+        background-color: #f9f9f9;
+        font-family: 'Times New Roman', Times, serif;
+        border-radius: 8px;
+    }
+
+    label {
+        display: block;
+        margin-bottom: 8px;
+        font-weight: bold;
+    }
+
+    input[type="text"],
+    input[type="email"],
+    textarea {
+        width: 100%;
+        padding: 10px;
+        margin-bottom: 15px;
+        border: 1px solid #ddd;
+        border-radius: 5px;
+        box-sizing: border-box;
+        font-family: 'Times New Roman', Times, serif;
+    }
+
+    button {
+        background-color: #b51e8a;
+        color: white;
+        padding: 10px 20px;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        font-family: 'Times New Roman', Times, serif;
+        font-weight: bold;
+    }
+
+    button:hover {
+        color: #b51e8a;
+        background-color: #ffffff;
+        border-color: none;
+    }
+
+    .error {
+        color: red;
+        margin-bottom: 15px;
+    }
+
+    .comment {
+        margin-bottom: 10px;
+        padding: 10px;
+        border-bottom: 1px solid #ddd;
+    }
+</style>
+<!-- Mariana Ferreira Morgado -->

@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exercício 7</title>
+</head>
+
+<body>
+    <div class="dropdown">
+        <button class="dropbtn">Menu</button>
+        <div class="dropdown-content">
+            <a href="#">Item 1</a>
+            <a href="#">Item 2</a>
+            <a href="#">Item 3</a>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function (event) {
+            var dropdown = document.getElementsByClassName("dropdown");
+            var i;
+
+            for (i = 0; i < dropdown.length; i++) {
+                dropdown[i].addEventListener("click", function () {
+                    this.classList.toggle("active");
+                    var dropdownContent = this.getElementsByClassName("dropdown-content")[0];
+                    if (dropdownContent.style.display === "block") {
+                        dropdownContent.style.display = "none";
+                    } else {
+                        dropdownContent.style.display = "block";
+                    }
+                });
+            }
+        });
+
+    </script>
+</body>
+
+</html>
+<style>
+    body{
+        background-color: #fca7e4;
+        color: #fff;
+        font-family: 'Times New Roman', Times, serif;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        height: 100vh;
+        margin: 0;
+    }
+    /* Dropdown Button */
+    .dropbtn {
+        background-color: #b51e8a;
+        color: white;
+        padding: 16px;
+        font-size: 16px;
+        border: none;
+        cursor: pointer;
+        border-radius: 8px;
+    }
+
+    /* Dropdown button on hover & focus */
+    .dropbtn:hover,
+    .dropbtn:focus {
+        background-color: #e442b6;
+    }
+
+    /* The container <div> - needed to position the dropdown content */
+    .dropdown {
+        position: relative;
+        display: inline-block;
+    }
+
+    /* Dropdown Content (Hidden by Default) */
+    .dropdown-content {
+        display: none;
+        position: absolute;
+        background-color: #f9f9f9;
+        min-width: 160px;
+        box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+        z-index: 1;
+        border-radius: 8px;
+    }
+
+    /* Links inside the dropdown */
+    .dropdown-content a {
+        color: black;
+        padding: 12px 16px;
+        text-decoration: none;
+        display: block;
+        border-radius: 8px;
+    }
+
+    /* Change color of dropdown links on hover */
+    .dropdown-content a:hover {
+        background-color: #f1f1f1;
+    }
+
+    /* Show the dropdown menu on hover */
+    .dropdown:hover .dropdown-content {
+        display: block;
+    }
+
+    /* Change the background color of the dropdown button when the dropdown content is shown */
+    .dropdown:hover .dropbtn {
+        background-color: #e442b6;
+    }
+</style>
+<!-- Mariana Ferreira Morgado -->

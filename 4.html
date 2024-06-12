@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exercício 4</title>
+</head>
+
+<body>
+    <table id="tabela">
+        <thead>
+            <tr>
+                <th>Coluna 1</th>
+                <th>Coluna 2</th>
+                <th>Coluna 3</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>Dados 1</td>
+                <td>Dados 2</td>
+                <td>Dados 3</td>
+            </tr>
+            <tr>
+                <td>Dados 4</td>
+                <td>Dados 5</td>
+                <td>Dados 6</td>
+            </tr>
+        </tbody>
+    </table>
+    <button id="addRowBtn">Adicionar Linha</button>
+
+    <script>
+        document.getElementById("addRowBtn").addEventListener("click", function () {
+            // Seleciona a tabela e o corpo da tabela
+            var table = document.getElementById("tabela").getElementsByTagName('tbody')[0];
+
+            // Cria uma nova linha e adiciona células com conteúdo
+            var newRow = table.insertRow();
+            var cell1 = newRow.insertCell(0);
+            var cell2 = newRow.insertCell(1);
+            var cell3 = newRow.insertCell(2);
+            cell1.textContent = "Novo Dados 1";
+            cell2.textContent = "Novo Dados 2";
+            cell3.textContent = "Novo Dados 3";
+        });
+    </script>
+</body>
+
+</html>
+<style>
+    body {
+        background-color: #fca7e4;
+        color: #fff;
+        font-family: 'Times New Roman', Times, serif;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        height: 100vh;
+        margin: 0;
+    }
+
+    table {
+        width: 50%;
+        border-collapse: separate;
+        border-spacing: 0;
+        margin: 20px 0;
+        border: 1px solid #ddd;
+        border-radius: 8px;
+        overflow: hidden;
+    }
+
+    th,
+    td {
+        padding: 8px;
+        text-align: left;
+        border-bottom: 1px solid #ddd;
+    }
+
+    th:first-child {
+        border-top-left-radius: 8px;
+    }
+
+    th:last-child {
+        border-top-right-radius: 8px;
+    }
+
+    tr:last-child td:first-child {
+        border-bottom-left-radius: 8px;
+    }
+
+    tr:last-child td:last-child {
+        border-bottom-right-radius: 8px;
+    }
+
+    th {
+        background-color: #f2f2f2;
+    }
+
+    tr:nth-child(even) {
+        background-color: #f9f9f9;
+    }
+
+    tr:nth-child(odd) {
+        background-color: #fff;
+    }
+
+    button {
+        border-radius: 30px;
+        background-color: #b51e8a;
+        color: #fff;
+        font-family: 'Times New Roman', Times, serif;
+        font-weight: bold;
+        padding: 1%;
+        border: none;
+    }
+
+    button:hover {
+        background-color: #ffffff;
+        color: #b51e8a;
+    }
+
+    thead {
+        color: #bf4f9f;
+        font-size: 20px;
+        font-weight: bold;
+    }
+</style>
+<!-- Mariana Ferreira Morgado -->
